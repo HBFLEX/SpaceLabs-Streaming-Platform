@@ -3,7 +3,7 @@ import { SignInButton, UserButton, currentUser } from "@clerk/nextjs"
 import { Clapperboard } from "lucide-react"
 import Link from "next/link"
 
-const actions = async () => {
+export const Actions = async () => {
 
   const user = await currentUser()
 
@@ -13,8 +13,8 @@ const actions = async () => {
         !!user
         ?
         <>
-          <Link href={`/u/}}`}>
-          <Button className="flex items-center space-x-1" size='sm' variant='ghost'>
+          <Link href={`/u/${user.username}`}>
+          <Button className="flex items-center space-x-1 hover:bg-transparent" size='sm' variant='ghost'>
             <Clapperboard className="text-white text-lg" />
             <p className="hidden lg:block text-white text-semibold text-lg">Dashboard</p>
           </Button>
@@ -31,5 +31,3 @@ const actions = async () => {
     </div>
   )
 }
-
-export default actions

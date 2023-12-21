@@ -1,6 +1,7 @@
 'use client'
 
-
+import { useRouter as router } from 'next/router'
+import qs from 'querystring'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -15,8 +16,13 @@ const search = () => {
     setSearchValue('')
   }
 
+  const handleSearch = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    
+  }
+
   return (
-    <form className='relative flex w-full lg:w-[600px] ml-2 mr-1 items-center gap-x-0'>
+    <form onSubmit={handleSearch} className='relative flex w-full lg:w-[600px] ml-2 mr-1 items-center gap-x-0'>
         <Input 
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
