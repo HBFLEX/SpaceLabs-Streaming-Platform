@@ -5,10 +5,8 @@ export default function Home() {
   return (
     <div>
       <p className='text-red-500 font-bold'>
-        Welcome to SpaceLabs
+        Home Page
       </p>
-
-      <UserButton afterSignOutUrl='/' />
     </div>
   )
 }
