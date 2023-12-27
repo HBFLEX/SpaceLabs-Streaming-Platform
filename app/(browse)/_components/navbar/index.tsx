@@ -5,7 +5,7 @@ import { Actions } from './actions'
 
 const index = () => {
   return (
-    <nav className='flex items-center justify-between bg-gray-800 h-20'>
+    <nav className='sticky top-0 flex items-center justify-between bg-gray-800 h-20'>
         <Logo />
         <Search />
         <Actions />

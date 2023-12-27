@@ -20,7 +20,7 @@ export const Logo = () => {
             </div>
             <div className="flex flex-col items-center justify-center">
                 <h1 className="text-xl font-semibold">SpaceLabs</h1>
-                <p className="text-muted-foreground">Let&apos;s Play! 🎮</p>
+                <p className="text-muted-foreground">Stream live 🎮</p>
             </div>
             
         </div>

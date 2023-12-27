@@ -22,7 +22,7 @@ const search = () => {
   }
 
   return (
-    <form onSubmit={handleSearch} className='relative flex w-full lg:w-[600px] ml-2 mr-1 items-center gap-x-0'>
+    <form onSubmit={handleSearch} className='relative flex w-full lg:w-[600px] ml-2 items-center gap-x-0'>
         <Input 
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
