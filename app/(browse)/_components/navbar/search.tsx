@@ -28,7 +28,7 @@ const search = () => {
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder='Search'
             type='text'
-            className='bg-gray-700 border-none text-white focus:ring-offset-0 focus:ring-0 rounded-r-none'
+            className='bg-gray-700 border-none text-white focus-visible:ring-offset-0 focus-visible:ring-0 rounded-r-none'
         />
         {
             searchValue 
@@ -38,8 +38,8 @@ const search = () => {
             className='absolute top-2.3 right-16 hover:cursor-pointer text-muted-foreground hover:text-red-500'
             />
         }
-        <Button type='submit' className='hover:bg-transparent rounded-l-none'>
-            <SearchIcon className='text-muted-foreground hover:text-white' />
+        <Button type='submit' className='bg-gray-900 hover:bg-transparent rounded-l-none'>
+            <SearchIcon className='h-5 w-5 text-muted-foreground hover:text-white' />
         </Button>
     </form>
   )

@@ -1,48 +1,25 @@
-'use client'
 import React from 'react'
 import { Wrapper } from './wrapper'
-import { useSidebarStore } from '@/store/use-sidebar'
-import { Button } from '@/components/ui/button'
-import { ArrowLeftFromLine, ArrowRightFromLine } from 'lucide-react'
-import Hint from '@/components/Hint'
+import Toggle from './toggle'
+import Recommended from './recommeded-users'
+import { RecommendedUsersListSkeleton } from './RecommendedUsersList'
 
 
-const index = () => {
 
-  const { collapsed, onExpand, onCollapse } = useSidebarStore((state) => state)
-
-  const label = collapsed ? 'Expand' : 'Collapse'
+export const Sidebar = () => {
 
   return (
     <Wrapper>
-        {
-          !collapsed && (
-            <div className='w-full flex flex-col mt-4'>
-              <div className='flex items-center justify-between'>
-                <p className='font-semibold text-white ml-3'>For you</p>
-                <Hint label={label} side='right' asChild>
-                  <Button variant='ghost' className='h-auto ml-auto hover:bg-transparent' onClick={onCollapse}>
-                    <ArrowLeftFromLine className='h-4 text-white' />
-                  </Button>
-                </Hint>
-              </div>
-            </div>
-          )
-        }
-
-        {
-          collapsed && (
-            <div className='hidden lg:flex flex-col items-center justfiy-center'>
-              <Hint label={label} side='right' asChild>
-                <Button variant='ghost' className='hover:bg-transparent' onClick={onExpand}>
-                  <ArrowRightFromLine className='h-4 text-white' />
-                </Button>
-              </Hint>
-            </div>
-          )
-        }
+        <Toggle />
+        <Recommended />
     </Wrapper>
   )
 }
 
-export default index
+export const SidebarSkeleton = () => {
+  return (
+    <aside className='fixed left-0 flex flex-col w-[70px] lg:w-60 h-full  bg-gray-800 border-r border-gray-800 z-40'>
+      <RecommendedUsersListSkeleton />
+    </aside>
+  )
+}
