@@ -32,7 +32,7 @@ export const UserItem = ({
       <Button 
       variant='ghost' 
       asChild 
-      className={cn('w-full h-12 p-1', collapsed ? 'justify-center' : 'justify-start', isActive && 'bg-orange-700')}>
+      className={cn('w-full h-12 p-1', collapsed ? 'justify-center' : 'justify-start mx-4', isActive && 'bg-orange-700')}>
         <Link href={href}>
           <div className={cn('flex items-center mt-4 mb-3 w-full gap-x-4', collapsed && 'justify-center',)}>
             <UserAvatar 
@@ -43,7 +43,7 @@ export const UserItem = ({
               showBadge
             />
             {!collapsed && 
-              <p className='truncate uppercase text-semibold text-md'>{username}</p>
+              <p className='truncate uppercase text-white text-semibold text-md'>{username}</p>
             }
             {isLive && !collapsed && <LiveBadge />}
           </div>
