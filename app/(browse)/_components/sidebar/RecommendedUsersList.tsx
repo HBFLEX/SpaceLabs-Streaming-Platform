@@ -18,7 +18,7 @@ export const RecommendedUsersList = ({data}:RecommendedUsersListProps) => {
         <div>
             {
                 showRecommendedLbl && (
-                    <div className='pl-6 mt-3 mb-4'>
+                    <div className='text-center mt-3 mb-4'>
                         <p className='text-sm text-muted-foreground '>
                             Recommended
                         </p>
