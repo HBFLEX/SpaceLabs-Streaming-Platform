@@ -3,7 +3,6 @@ import { db } from "./db";
 
 
 const getFollowing = async () => {
-    new Promise((resolve) => setTimeout(resolve, 5000));
 
     const self = await getSelf()
 
