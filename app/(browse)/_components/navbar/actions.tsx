@@ -2,13 +2,13 @@ import { Button } from "@/components/ui/button"
 import { SignInButton, UserButton, currentUser } from "@clerk/nextjs"
 import { Clapperboard } from "lucide-react"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+
+
 
 export const Actions = async () => {
 
-  const user = await currentUser()
+  const user = await currentUser() || null
 
-  // if(!user) throw new Error('The user was not found')
 
   return (
     <div className="flex items-center gap-x-1 mr-2 lg:mr-4">

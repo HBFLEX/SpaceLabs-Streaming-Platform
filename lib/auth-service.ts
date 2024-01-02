@@ -2,7 +2,7 @@ import { currentUser } from "@clerk/nextjs"
 import {db} from '@/lib/db'
 
 
-const getSelf = async() => {
+export const getSelf = async() => {
     const self = await currentUser()
 
     if(!self) throw new Error('User not found')
@@ -16,5 +16,4 @@ const getSelf = async() => {
     if(!user) throw new Error('No user found in db')
 
     return user
-
 }

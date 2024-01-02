@@ -28,13 +28,12 @@ export const UserItem = ({
   const { collapsed } = useSidebarStore((state) => state)
 
   return (
-    <div>
       <Button 
-      variant='ghost' 
-      asChild 
-      className={cn('w-full h-12 p-1', collapsed ? 'justify-center' : 'justify-start', isActive && 'bg-orange-700')}>
+        variant='ghost' 
+        asChild 
+        className={cn('w-full h-12 p-1 hover:bg-gray-400/60', collapsed ? 'justify-center' : 'justify-start', isActive && 'bg-gray-400/60')}>
         <Link href={href}>
-          <div className={cn('flex items-center mt-4 mb-3 w-full gap-x-4', collapsed && 'justify-center',)}>
+          <div className={cn('flex items-center mt-4 mb-3 w-full gap-x-4', collapsed ? 'justify-center' : 'justify-between',)}>
             <UserAvatar 
               imageUrl={imageUrl}
               username={username}
@@ -43,13 +42,12 @@ export const UserItem = ({
               showBadge
             />
             {!collapsed && 
-              <p className='truncate uppercase text-semibold text-md'>{username}</p>
+              <p className='truncate w-24 uppercase text-white text-semibold text-md'>{username}</p>
             }
             {isLive && !collapsed && <LiveBadge />}
           </div>
         </Link>
       </Button>
-    </div>
   )
 }
 

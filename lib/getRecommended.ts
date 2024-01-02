@@ -1,13 +1,31 @@
 import { db } from "./db"
-
+import { getSelf } from './auth-service'
 
 const getRecommended = async() => {
 
-    await new Promise(resolve => setTimeout(resolve, 5000))
+    // new Promise((resolve) => setTimeout(resolve, 5000));
 
-    const users = db.user.findMany({
-        orderBy: { createdAt: 'desc' }
-    })
+    let user = null;
+    let users = null;
+
+    try{
+        user = await getSelf()
+    }catch(e){
+        user = null
+    }
+    
+    if(user){
+        users = db.user.findMany({
+            orderBy: { createdAt: 'desc' },
+            where: { 
+                NOT: { id: user.id }
+            }
+        })
+    }else{
+        users = db.user.findMany({
+            orderBy: { createdAt: 'desc' }
+        })
+    }
 
     if(!users) return { users: [] }
     

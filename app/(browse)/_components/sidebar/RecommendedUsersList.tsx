@@ -13,13 +13,17 @@ export const RecommendedUsersList = ({ data }: RecommendedUsersListProps) => {
 	const { collapsed } = useSidebarStore((state) => state);
 	const showRecommendedLbl = !collapsed && data.length > 0;
 
-	return (
-		<div>
-			{showRecommendedLbl && (
-				<div className="pl-6 mt-3 mb-4">
-					<p className="text-sm text-muted-foreground ">Recommended</p>
-				</div>
-			)}
+    return (
+        <div>
+            {
+                showRecommendedLbl && (
+                    <div className='text-center mt-3 mb-4'>
+                        <p className='text-sm text-muted-foreground '>
+                            Recommended
+                        </p>
+                    </div>
+                )
+            }
 
 			{data.map((user: User) => (
 				<UserItem
