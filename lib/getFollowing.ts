@@ -4,18 +4,21 @@ import { db } from "./db";
 
 const getFollowing = async () => {
 
-    const self = await getSelf()
+    try{
+        const self = await getSelf()
 
-    if(!self) throw new Error('Unauthorized to perform requested action')
+        if(!self) throw new Error('Unauthorized to perform requested action')
 
-    const following = await db.follow.findMany({
-        where: { followerId: self.id },
-        include: { following: true }
-    })
+        const following = await db.follow.findMany({
+            where: { followerId: self.id },
+            include: { following: true }
+        })
 
-    if(!following) return []
-
-    return following
+        if(!following) return []
+        return following
+    }catch(_){
+        return []
+    }
 }
 
 export default getFollowing

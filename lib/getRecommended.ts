@@ -16,7 +16,20 @@ const getRecommended = async() => {
         users = db.user.findMany({
             orderBy: { createdAt: 'desc' },
             where: { 
-                NOT: { id: user.id }
+                AND: [
+                    {
+                        NOT: { id: user.id }
+                    },
+                    {
+                        NOT: {
+                            followedBy: {
+                                some: {
+                                    followerId: user.id
+                                }
+                            }
+                        }
+                    }
+                ]
             }
         })
     }else{
