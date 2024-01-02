@@ -31,7 +31,7 @@ export const RecommendedUsersList = ({data}:RecommendedUsersListProps) => {
                     <UserItem 
                         username={user.username}
                         imageUrl={user.imageUrl}
-                        isLive={false}
+                        isLive={true}
                     />
                 ))
             }
