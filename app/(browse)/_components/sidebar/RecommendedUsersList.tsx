@@ -17,7 +17,7 @@ export const RecommendedUsersList = ({ data }: RecommendedUsersListProps) => {
         <div>
             {
                 showRecommendedLbl && (
-                    <div className='text-center mt-3 mb-4'>
+                    <div className='ml-3 mt-3 mb-4'>
                         <p className='text-sm text-muted-foreground '>
                             Recommended
                         </p>
@@ -29,7 +29,7 @@ export const RecommendedUsersList = ({ data }: RecommendedUsersListProps) => {
 				<UserItem
 					username={user.username}
 					imageUrl={user.imageUrl}
-					isLive={true}
+					isLive={false}
 				/>
 			))}
 		</div>

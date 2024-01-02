@@ -3,7 +3,7 @@ import { getSelf } from './auth-service'
 
 const getRecommended = async() => {
 
-    // new Promise((resolve) => setTimeout(resolve, 5000));
+    new Promise((resolve) => setTimeout(resolve, 5000));
 
     let user = null;
     let users = null;

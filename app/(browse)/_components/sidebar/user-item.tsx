@@ -31,9 +31,9 @@ export const UserItem = ({
       <Button 
         variant='ghost' 
         asChild 
-        className={cn('w-full h-12 p-1 hover:bg-gray-400/60', collapsed ? 'justify-center' : 'justify-start', isActive && 'bg-gray-400/60')}>
+        className={cn('w-full h-12 p-1 hover:bg-gray-700/80', collapsed ? 'justify-center' : 'justify-start', isActive && 'bg-gray-700/80')}>
         <Link href={href}>
-          <div className={cn('flex items-center mt-4 mb-3 w-full gap-x-4', collapsed ? 'justify-center' : 'justify-between',)}>
+          <div className={cn('flex items-center mt-4 mb-3 w-full gap-x-4', collapsed && 'justify-center', isLive && !collapsed && 'justify-between')}>
             <UserAvatar 
               imageUrl={imageUrl}
               username={username}
