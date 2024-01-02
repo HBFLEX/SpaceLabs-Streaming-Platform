@@ -77,7 +77,7 @@ export const MessageSection = () => {
 		},
 	];
 
-	// color pallette for the user names
+	// color pallette for the user names testing purpose
 	const colors = [
 		"text-indigo-600",
 		"text-indigo-400",
@@ -91,7 +91,7 @@ export const MessageSection = () => {
 		<div
 			data-te-perfect-scrollbar-init
 			data-te-suppress-scroll-x="true"
-			className="flex-1 overflow-y-auto px-4 max-h-[64%] scrollbar  scrollbar-thin"
+			className="flex-1 overflow-y-auto px-4 max-h-[64%] scrollbar scrollbar-thumb-indigo-400 scrollbar-thin"
 		>
 			{chatMessages.map((message, index) => (
 				<div key={index} className="mb-2 hover:bg-gray-700 p-2 rounded-md">
