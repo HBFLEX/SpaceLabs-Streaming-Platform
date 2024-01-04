@@ -28,6 +28,15 @@ const getRecommended = async() => {
                                 }
                             }
                         }
+                    },
+                    {
+                        NOT: {
+                            blocking: {
+                                some: {
+                                   blockedId: user.id 
+                                }
+                            }
+                        }
                     }
                 ]
             }
