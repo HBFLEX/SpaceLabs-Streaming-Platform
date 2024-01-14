@@ -4,6 +4,7 @@ import { LucideIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { cn } from '@/lib/utils'
+import { Skeleton } from '@/components/ui/skeleton'
 
 
 interface NavItemProps{
@@ -13,7 +14,7 @@ interface NavItemProps{
     isActive: boolean
 }
 
-const NavItem = ({
+export const NavItem = ({
     label,
     href,
     icon: Icon,
@@ -36,4 +37,14 @@ const NavItem = ({
     )
 }
 
-export default NavItem
+export const NavItemSkeleton = () => {
+
+    const { collapsed } = useCreatorSidebarStore((state) => state)
+
+    return (
+        <li className='flex item-center gap-x-4 mb-4 px-4'>
+            <Skeleton className='w-[30px] h-[30px] rounded-md' />
+            <Skeleton className='hidden lg:flex flex-1 w-[160px] h-[30px]' />
+        </li>
+    )
+}
