@@ -1,6 +1,6 @@
 import React from 'react' 
 import Navbar from '../dashboard/_components/navbar'
-import Container from './container'
+import { Sidebar } from './_components/sidebar'
 
 
 const DashboardLayout = ({
@@ -9,7 +9,10 @@ const DashboardLayout = ({
   return (
     <>
         <Navbar />
-        <Container children={children} />
+        <div className='flex space-x-10 gap-10'>
+          <Sidebar />
+          {children}
+        </div>
     </>
   )
 }
