@@ -5,6 +5,8 @@ import Wrapper from './wrapper'
 export const Sidebar = () => {
 
   return (
-    <Wrapper />
+    <Wrapper>
+      Sidebar
+    </Wrapper>
   )
 }
