@@ -10,6 +10,6 @@ interface CreatorSidebarStore{
 
 export const useCreatorSidebarStore = create<CreatorSidebarStore>((set) => ({
     collapsed: false,
-    onExpand: () => set(() => ({ collapsed: true })),
+    onExpand: () => set(() => ({ collapsed: false })),
     onCollapse: () => set(() => ({ collapsed: true }))
 }))
