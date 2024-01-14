@@ -39,8 +39,6 @@ export const NavItem = ({
 
 export const NavItemSkeleton = () => {
 
-    const { collapsed } = useCreatorSidebarStore((state) => state)
-
     return (
         <li className='flex item-center gap-x-4 mb-4 px-4'>
             <Skeleton className='w-[30px] h-[30px] rounded-md' />
