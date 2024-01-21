@@ -21,22 +21,6 @@ const page = async () => {
             label="Enable Chat"
           />
         </div>
-
-        <div className='mb-3'>
-          <ToggleCard 
-            field="isChatDelayed"
-            value={stream.isChatDelayed}
-            label="Delay Chat"
-          />
-        </div>
-
-        <div className='mb-3'>
-          <ToggleCard 
-            field="isLive"
-            value={stream.isLive}
-            label="Enable Live Chat"
-          />
-        </div>
     </div>
   )
 }

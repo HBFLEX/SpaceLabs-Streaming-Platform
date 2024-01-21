@@ -1,9 +1,11 @@
+'use server'
+
+
 import { Stream } from "@prisma/client";
 import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { getSelf } from "@/lib/auth-service";
 import { getStreamByUserId } from "@/lib/stream-service";
-
 
 
 const updateStream = async (values: Partial<Stream>) => {
@@ -19,7 +21,6 @@ const updateStream = async (values: Partial<Stream>) => {
             isChatEnabled: values.isChatEnabled,
             isChatDelayed: values.isChatDelayed,
             isChatFollowersOnly: values.isChatFollowersOnly,
-            isLive: values.isLive
         }
 
         const stream = await db.stream.update({
@@ -32,8 +33,8 @@ const updateStream = async (values: Partial<Stream>) => {
         revalidatePath(`/u/${self.username}`)
 
         return stream
-    }catch{
-        throw new Error('Internal Server Error')
+    }catch(err){
+        throw new Error(`Internal Server Error -> ${err}`)
     }
     
 }
