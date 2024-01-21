@@ -1,10 +1,16 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 
 const logo = () => {
+
+  const path = usePathname()
+
   return (
-    <Link href='/'>
+    <Link href={path}>
         <div className='flex gap-x-4 ml-2 lg:ml-4 hover:opacity-70 hover:cursor-pointer'>
             <div className='bg-white rounded-full p-1'>
                 <Image 
