@@ -28,7 +28,7 @@ const KeyCard = ({ value }: KeyCardProps) => {
     <div className='rounded-md mt-4 bg-muted p-6'>
         <div className='flex items-center gap-x-6 mb-2'>
             <p className='font-semibold shrink-0'>Server Key</p>
-            <Input type={showServerKey ? 'text' : 'password'} value={value || ''} placeholder={value || ''} className='w-full' />
+            <Input disabled type={showServerKey ? 'text' : 'password'} value={value || ''} placeholder={value || 'Server Key'} className='w-full' />
             <Hint label={copyHintLabel} side='bottom' asChild>
                 <Button disabled={!value || isCopied} onClick={onCopy} variant='ghost'>
                     <Icon className='w-4 h-4' />

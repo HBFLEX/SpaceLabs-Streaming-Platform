@@ -4,6 +4,7 @@ import UrlCard from './_components/url-card'
 import { getSelf } from '@/lib/auth-service'
 import { getStreamByUserId } from '@/lib/stream-service'
 import KeyCard from './_components/key-card'
+import ConnectModal from './_components/connect-modal'
 
 const page = async () => {
 
@@ -17,7 +18,7 @@ const page = async () => {
     <div className='pt-10 pr-10'>
         <div className='flex items-center justify-between'>
             <h1 className='text-3xl font-bold'>Keys & URL's</h1>
-            <Button variant='primary'>Generate</Button>
+            <ConnectModal />
         </div>
         <div className='mt-6'>
             <UrlCard 
