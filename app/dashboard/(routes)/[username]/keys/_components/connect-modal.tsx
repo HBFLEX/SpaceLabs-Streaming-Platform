@@ -53,7 +53,7 @@ const ConnectModal = () => {
     <Dialog>
 
         <DialogTrigger asChild>
-            <Button variant='primary'>Generate</Button>
+            <Button variant='primary'>Generate Connection</Button>
         </DialogTrigger>
 
         <DialogContent>

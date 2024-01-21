@@ -19,7 +19,7 @@ import { revalidatePath } from 'next/cache'
 const roomService = new RoomServiceClient(
     process.env.LIVEKIT_API_URL!,
     process.env.LIVEKIT_API_KEY!,
-    process.env.LIVEKIT_API_SECRET_KEY!
+    process.env.LIVEKIT_API_SECRET!
 )
 
 // initialize a new ingress
@@ -46,54 +46,58 @@ export const resetIngresses = async (hostIdentity: string) => {
 }
 
 export const createIngress = async (ingressType: IngressInput) => {
-    const self = await getSelf()
-    if(!self) throw new Error('No user data found')
+    try{
+        const self = await getSelf()
+        if(!self) throw new Error('No user data found')
 
-    // reset previous ingress
-    await resetIngresses(self.id)
+        // reset previous ingress
+        await resetIngresses(self.id)
 
-    const options: CreateIngressOptions = {
-        name: self.username,
-        roomName: self.id,
-        participantName: self.username,
-        participantIdentity: self.id
-    }
-
-    // if ingress = WHIP protocol then allow transcode bypassing
-    // if ingress = RTMP protocol allow video & audio tracksource
-    if(ingressType === IngressInput.WHIP_INPUT){
-        options.bypassTranscoding = true
-    }else{
-        options.video = {
-            source: TrackSource.CAMERA,
-            preset: IngressVideoEncodingPreset.H264_1080P_30FPS_3_LAYERS,
+        const options: CreateIngressOptions = {
+            name: self.username,
+            roomName: self.id,
+            participantName: self.username,
+            participantIdentity: self.id
         }
-        options.audio = {
-            source: TrackSource.MICROPHONE,
-            preset: IngressAudioEncodingPreset.OPUS_STEREO_96KBPS
+
+        // if ingress = WHIP protocol then allow transcode bypassing
+        // if ingress = RTMP protocol allow video & audio tracksource
+        if(ingressType === IngressInput.WHIP_INPUT){
+            options.bypassTranscoding = true
+        }else{
+            options.video = {
+                source: TrackSource.CAMERA,
+                preset: IngressVideoEncodingPreset.H264_1080P_30FPS_3_LAYERS,
+            }
+            options.audio = {
+                source: TrackSource.MICROPHONE,
+                preset: IngressAudioEncodingPreset.OPUS_STEREO_96KBPS
+            }
         }
-    }
 
-    // create a new ingress
-    const ingress = await ingressClient.createIngress(
-        ingressType,
-        options
-    )
+        // create a new ingress
+        const ingress = await ingressClient.createIngress(
+            ingressType,
+            options
+        )
 
-    if(!ingress || !ingress.url || !ingress.streamKey){
-        throw new Error('Failed to create ingress')
-    }
-
-    await db.stream.update({
-        where: { userId: self.id },
-        data: {
-            ingressId: ingress.ingressId,
-            serverUrl: ingress.url,
-            streamKey: ingress.streamKey,
+        if(!ingress || !ingress.url || !ingress.streamKey){
+            throw new Error('Failed to create ingress')
         }
-    })
 
-    revalidatePath(`/dashboard/${self.username}/keys`)
-    return ingress
+        await db.stream.update({
+            where: { userId: self.id },
+            data: {
+                ingressId: ingress.ingressId,
+                serverUrl: ingress.url,
+                streamKey: ingress.streamKey,
+            }
+        })
+
+        revalidatePath(`/dashboard/${self.username}/keys`)
+        return ingress
+    }catch(err){
+        throw new Error(`Something went wrong -> ${err}`)
+    }
 }
 
