@@ -3,6 +3,7 @@ import React from 'react'
 import UrlCard from './_components/url-card'
 import { getSelf } from '@/lib/auth-service'
 import { getStreamByUserId } from '@/lib/stream-service'
+import KeyCard from './_components/key-card'
 
 const page = async () => {
 
@@ -21,6 +22,9 @@ const page = async () => {
         <div className='mt-6'>
             <UrlCard 
                 value={stream.serverUrl}
+            />
+            <KeyCard 
+                value={stream.streamKey}
             />
         </div>
     </div>
