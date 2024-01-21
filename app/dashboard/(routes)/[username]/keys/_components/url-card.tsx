@@ -27,7 +27,7 @@ const UrlCard = ({ value }:UrlCardProps) => {
     <div className='rounded-md bg-muted p-6'>
         <div className='flex items-center gap-x-6'>
             <p className='font-semibold shrink-0'>Server URL</p>
-            <Input value={value || ''} placeholder='Server URL' disabled className='w-full' />
+            <Input value={value || ''} placeholder={value || 'Server URL'} disabled className='w-full' />
             <Hint label={copyHintLabel} side='bottom' asChild>
                 <Button disabled={!value || isCopied} variant='ghost' onClick={onCopy}><Icon className='h-4 w-4'></Icon></Button>
             </Hint>

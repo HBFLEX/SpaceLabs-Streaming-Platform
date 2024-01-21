@@ -1,3 +1,5 @@
+'use client'
+
 import { IngressInput } from 'livekit-server-sdk'
 import { Button } from '@/components/ui/button'
 import {
