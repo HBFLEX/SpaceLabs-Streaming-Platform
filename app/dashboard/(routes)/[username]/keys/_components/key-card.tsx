@@ -30,13 +30,13 @@ const KeyCard = ({ value }: KeyCardProps) => {
             <p className='font-semibold shrink-0'>Server Key</p>
             <Input type={showServerKey ? 'text' : 'password'} value={value || ''} placeholder={value || ''} className='w-full' />
             <Hint label={copyHintLabel} side='bottom' asChild>
-                <Button onClick={onCopy} variant='ghost'>
+                <Button disabled={!value || isCopied} onClick={onCopy} variant='ghost'>
                     <Icon className='w-4 h-4' />
                 </Button>
             </Hint>
         </div>
         <div className='flex items-center justify-center'>
-            <Button onClick={() => setShowServerKey(!showServerKey)} variant='link'>
+            <Button disabled={!value || isCopied} onClick={() => setShowServerKey(!showServerKey)} variant='link'>
                 { showServerKey ? 'Hide' : 'Show' }
             </Button>
         </div>
