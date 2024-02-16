@@ -19,7 +19,7 @@ export const isFollowingUser = async (id: string) => {
             where: { 
                 followerId: self.id,
                 followingId: otherUser.id
-             }
+            }
         })
 
         return !!existingFollow

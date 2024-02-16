@@ -11,7 +11,7 @@ const getFollowing = async () => {
 
         const following = await db.follow.findMany({
             where: { followerId: self.id },
-            include: { following: true }
+            include: { following: { include: { stream: true, }, }, },
         })
 
         if(!following) return []

@@ -1,12 +1,12 @@
 'use client'
 
 import { useSidebarStore } from '@/store/use-sidebar'
-import { Follow, User } from '@prisma/client'
+import { Follow, Stream, User } from '@prisma/client'
 import React from 'react'
 import { UserItem, UserItemSkeleton } from './user-item'
 
 interface FollowedUsersListProps{
-    data: (Follow & { following: User })[]
+    data: (Follow & { following: User & { stream: Stream | null } })[]
 }
 
 
@@ -17,8 +17,6 @@ export const FollowedUsersList = ({
     const { collapsed } = useSidebarStore((state) => state)
 
     const showFollowingLbl = !collapsed && data.length > 0
-
-    console.log('following users', data)
 
     return (
     <div>
@@ -35,7 +33,7 @@ export const FollowedUsersList = ({
                 <UserItem 
                     username={follow.following.username}
                     imageUrl={follow.following.imageUrl}
-                    isLive={false}
+                    isLive={follow.following.stream?.isLive}
                 />
             ))
         }

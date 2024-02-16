@@ -39,15 +39,19 @@ const getRecommended = async() => {
                         }
                     }
                 ]
-            }
+            },
+            include: {
+                stream: true,
+            },
         })
     }else{
         users = db.user.findMany({
-            orderBy: { createdAt: 'desc' }
+            orderBy: { createdAt: 'desc' },
+            include: {
+                stream: true,
+            },
         })
     }
-
-    if(!users) return { users: [] }
     
     return users
 }
