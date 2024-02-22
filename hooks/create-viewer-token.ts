@@ -1,10 +1,10 @@
-import { toast } from "sonner";
-import { useEffect, useState } from "react"; }
+import { toast } from "sonner"
+import { useEffect, useState } from "react"
 import { JwtPayload, jwtDecode } from 'jwt-decode'
-import { createViewerToken } from "@/actions/token";
+import { createViewerToken } from "@/actions/token"
 
 
-const useViewerToken = async(hostIdentity: string) => {
+export const useViewerToken = (hostIdentity: string) => {
     const [token, setToken] = useState('')
     const [name, setName] = useState('')
     const [identity, setIdentity] = useState('')
@@ -27,7 +27,9 @@ const useViewerToken = async(hostIdentity: string) => {
                 toast.error('Something went wrong!')
             }
         }
-    }, [])
-}
 
-export default createViewerToken
+        createToken()
+    }, [hostIdentity])
+
+    return { token, name, identity }
+}

@@ -1,4 +1,4 @@
-import { StreamPlayer } from '@/components/stream-player'
+import { StreamPlayer } from '@/components/stream-player/'
 import { getSelfByUsername } from '@/lib/auth-service'
 import { currentUser } from '@clerk/nextjs'
 import { redirect } from 'next/navigation'
