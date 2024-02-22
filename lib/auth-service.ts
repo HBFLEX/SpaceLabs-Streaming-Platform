@@ -25,6 +25,7 @@ export const getSelfByUsername = async(username: string) => {
 
     const user = await db.user.findUnique({
         where: { username },
+        include: { stream: true, },
     })
 
     if(!user) throw new Error('User not found')

@@ -12,7 +12,6 @@ const Container = ({ children }: {children: React.ReactNode}) => {
     const { collapsed, onExpand, onCollapse } = useCreatorSidebarStore((state) => state)
     const matches = useMediaQuery(`(max-width: 1024px)`)
 
-
     useEffect(() => {
         if(matches) onCollapse()
         else onExpand()
